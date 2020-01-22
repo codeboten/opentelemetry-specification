@@ -1,15 +1,11 @@
 # Correlations API
 
-An `Entry` is used to label anything that is associated with a specific
-operation, such as an HTTP request.
-
-`CorrelationContext` is an abstract data type that represents a collection of
-entries. Each key of `CorrelationContext` is associated with exactly one value.
+`CorrelationContext` is an abstract data type represented by set of name/value pairs describing user
+defined properties. Each key of `CorrelationContext` is associated with exactly one value.
 `CorrelationContext` is serializable, to facilitate propagating it not only
 inside the process but also across process boundaries. `CorrelationContext` is
-used to annotate telemetry with the name:value pair `Entry`. Those values can
-be used to add dimension to the metric or additional context properties to logs
-and traces.
+used to annotate telemetry. Those values can be used to add dimension to the metric or
+additional context properties to logs and traces.
 
 `CorrelationContext` is a recommended name but languages can have more
 language-specific names like `cctx`.
