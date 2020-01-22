@@ -204,13 +204,6 @@ Required parameter:
 
 `Context` the context from which to remove all correlations.
 
-### GetCorrelationPropagator
-
-To deserialize the previous labels set by prior processes, and to serialize the current
-total set of labels and send them to the next process, the Correlations API provides a function
-which returns a Correlation-specific implementation of the `HTTPExtract` and `HTTPInject`
-functions found in the Propagation API.
-
 ### Limits
 
 Combined size of all entries should not exceed 8192 bytes before encoding.

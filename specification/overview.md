@@ -207,10 +207,10 @@ to convey values for the OpenTelemetry observability systems.
 
 These values can be consumed from **CorrelationContext** and used as an additional dimension for a metric,
 or additional context for logs and traces. Some examples:
+
 - a web service can benefit from including context around what service has sent the request.
 - a SaaS provider can include context about the API user or token that is responsible for that request
 - determining that a particular browser version is associated with a failure in an image processing service
-
 
 **CorrelationContext** is a collection of name/value pairs, with each key of associated with
 exactly one value and is serialized using the [W3C Correlation Context](https://w3c.github.io/correlation-context/)
