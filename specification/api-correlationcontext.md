@@ -45,8 +45,8 @@ entries in this `CorrelationContext`.
 
 ### GetCorrelation
 
-To access the value for a label set by a prior event, the Correlations API
-provides a function which takes a context and a key as input, and returns a
+To access the value for an entry by a prior event, the Correlations API
+provides a function which takes a context and a name as input, and returns a
 value. Returns the `Value` associated with the given `Name`, or null
 if the given `Name` is not present.
 
@@ -58,8 +58,8 @@ Required parameter:
 
 ### SetCorrelation
 
-To record the value for a label, the Correlations API provides a function which
-takes a context, a key, and a value as input. Returns an updated `Context` which
+To record the value for an entry, the Correlations API provides a function which
+takes a context, a name, and a value as input. Returns an updated `Context` which
 contains the new value.
 
 Required parameter:
@@ -72,8 +72,8 @@ Required parameter:
 
 ### RemoveCorrelation
 
-To delete a label, the Correlations API provides a function which takes a context
-and a key as input. Returns an updated `Context` which no longer contains the selected `Name`.
+To delete an entry, the Correlations API provides a function which takes a context
+and a name as input. Returns an updated `Context` which no longer contains the selected `Name`.
 
 Required parameter:
 
@@ -83,7 +83,7 @@ Required parameter:
 
 ### ClearCorrelations
 
-To avoid sending any labels to an untrusted process, the Correlation API provides
+To avoid sending any entries to an untrusted process, the Correlation API provides
 a function to remove all Correlations from a context. Returns an updated `Context`
 with no correlations.
 
