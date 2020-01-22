@@ -223,21 +223,6 @@ use a new HTTP header to convey data throughout a distributed trace.
 
 `CorrelationContext` is a recommended name but languages can have more language-specific names like `cctx`.
 
-### Entry
-
-An **Entry** is used to represent the labels that are contained inside the `CorrelationContext`, representing values such as the service that originated the request, or vendor-specific data. It consists of an **EntryKey**, an **EntryValue** and an **EntryMetadata**.
-
-- **EntryKey** is the name of the **Entry**. **EntryKey** along with **EntryValue**
-  can be used to aggregate and group stats, annotate traces and logs, etc. **EntryKey** is
-  a string that contains only printable ASCII (codes between 32 and 126 inclusive) and with
-  a length greater than zero and less than 256.
-- **EntryValue** is a string that contains only printable ASCII (codes between 32 and 126).
-- **EntryMetadata** contains properties associated with an **Entry**.
-  For now only the property **EntryTTL** is defined.
-- **EntryTTL** is an integer that represents number of hops an entry can propagate.
-  Anytime a sender serializes an entry, sends it over the wire and a receiver deserializes
-  the entry then the entry is considered to have travelled one hop.
-
 ## Resources
 
 `Resource` captures information about the entity for which telemetry is

@@ -38,11 +38,6 @@ This directory describes the Metrics API that can be used to record application 
 This directory describes the CorrelationContext API that can be used to manage context propagation
 and metrics-related labeling.
 
-This API consists of a few main classes:
-
-- `Entry` is used to label anything that is associated with a specific operation, such as an HTTP request.
-- An `Entry` consists of `EntryMetadata`, `EntryKey`, and `EntryValue`.
-
 ### [/trace](api-tracing.md)
 
 This API consist of a few main classes:
