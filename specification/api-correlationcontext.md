@@ -2,8 +2,7 @@
 
 `CorrelationContext` is an abstract data type represented by set of name/value pairs describing user
 defined properties. Each key of `CorrelationContext` is associated with exactly one value.
-`CorrelationContext` is serializable, to facilitate propagating it not only
-inside the process but also across process boundaries. `CorrelationContext` is
+`CorrelationContext` is serialized using the [W3C Correlation Context](https://w3c.github.io/correlation-context/) specification and is
 used to annotate telemetry. Those values can be used to add dimension to the metric or
 additional context properties to logs and traces.
 

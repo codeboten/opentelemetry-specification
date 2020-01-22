@@ -195,15 +195,31 @@ document.
 
 ## CorrelationContext
 
-In addition to trace propagation, OpenTelemetry provides a simple mechanism for propagating indexes, called **CorrelationContext**. The **CorrelationContext** is intended for indexing observability events in one service with attributes provided by a prior service in the same transaction. This helps to establish a causal relationship between these events. For example, determining that a particular browser version is associated with a failure in an image processing service.
+In addition to trace propagation, OpenTelemetry provides a simple mechanism for propagating
+name/value pairs, called **CorrelationContext**. The **CorrelationContext** is intended for
+indexing observability events in one service with attributes provided by a prior service in
+the same transaction. This helps to establish a causal relationship between these events.
 
-The **CorrelationContext** is based on the [W3C Correlation-Context specification](https://w3c.github.io/correlation-context/), and implements the protocol as it is defined in that working group. While **CorrelationContext** can be used to prototype other cross-cutting concerns, this mechanism is primarily intended to convey values for the OpenTelemetry observability systems.
+The **CorrelationContext** is based on the [W3C Correlation-Context specification](https://w3c.github.io/correlation-context/),
+and implements the protocol as it is defined in that working group. While **CorrelationContext**
+can be used to prototype other cross-cutting concerns, this mechanism is primarily intended
+to convey values for the OpenTelemetry observability systems.
 
-For backwards compatibility, OpenTracing Baggage is propagated as **CorrelationContext** when using the OpenTracing bridge. New concerns with different criteria should be modeled separately, using the same underlying context propagation layer as building blocks.
+These values can be consumed from **CorrelationContext** and used as an additional dimension for a metric,
+or additional context for logs and traces. Some examples:
+- a web service can benefit from including context around what service has sent the request.
+- a SaaS provider can include context about the API user or token that is responsible for that request
+- determining that a particular browser version is associated with a failure in an image processing service
 
-For example, a web service can benefit from including context around what service has sent the request. Or a SaaS provider can include context about the API user or token that is responsible for that request. These values can be consumed from **CorrelationContext** and used as an additional dimension for a metric, or additional context for logs and traces.
 
-**CorrelationContext** is a collection of key-value `Entry` pairs, with each key of associated with exactly one value. **CorrelationContext** is serializable, to facilitate propagating it not only inside the process but also across process boundaries.
+**CorrelationContext** is a collection of name/value pairs, with each key of associated with
+exactly one value and is serialized using the [W3C Correlation Context](https://w3c.github.io/correlation-context/)
+specification.
+
+For backwards compatibility with OpenTracing, Baggage is propagated as **CorrelationContext** when
+using the OpenTracing bridge. New concerns with different criteria should consider creating new a new
+cross-cutting concern to cover their use-case; they may benefit from the W3C encoding format but
+use a new HTTP header to convey data throughout a distributed trace.
 
 `CorrelationContext` is a recommended name but languages can have more language-specific names like `cctx`.
 
