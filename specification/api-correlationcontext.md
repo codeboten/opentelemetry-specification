@@ -9,16 +9,11 @@ additional context properties to logs and traces.
 `CorrelationContext` is a recommended name but languages can have more
 language-specific names like `cctx`.
 
-## entry
+### Conflict Resolution
 
-An `entry` consists of a name and value.
-
-### Entry Conflict Resolution
-
-If a new entry conflicts with an existing entry then the new entry takes precedence. Entire entry along is replaced by
-the most recent entry (regardless of it is locally generated or received from a remote peer). Replacement is limited to a
-scope in which the conflict arises. When the scope is closed the original value and metadata prior to the conflict is
-restored. For example,
+If a new name/value pair is added and its name conflicts with an existing pair, then the new pair takes precedence. The value
+is replaced by the most recent value (regardless of it is locally generated or received from a remote peer). Replacement is limited to a
+scope in which the conflict arises. When the scope is closed the original value prior to the conflict is restored. For example,
 
 ```
 T# - entry names
